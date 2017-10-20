@@ -1,8 +1,5 @@
 // list of available languages
-export const enabledLanguages = [
-  'en',
-  'fr',
-];
+export const enabledLanguages = ['en', 'fr'];
 
 // this object will have language-specific data added to it which will be placed in the state when that language is active
 // if localization data get to big, stop importing in all languages and switch to using API requests to load upon switching languages

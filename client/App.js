@@ -16,14 +16,12 @@ export default function App(props) {
   return (
     <Provider store={props.store}>
       <IntlWrapper>
-        <Router history={browserHistory}>
-          {routes}
-        </Router>
+        <Router history={browserHistory}>{routes}</Router>
       </IntlWrapper>
     </Provider>
   );
 }
 
 App.propTypes = {
-  store: React.PropTypes.object.isRequired,
+  store: React.PropTypes.object.isRequired
 };

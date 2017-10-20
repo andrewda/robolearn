@@ -7,7 +7,7 @@ export default {
     by: 'By',
     deleteCourse: 'Delete Course',
     createNewCourse: 'Create new course',
-    authorName: 'Author\'s Name',
+    authorName: "Author's Name",
     courseTitle: 'Course Title',
     courseContent: 'Course Content',
     submit: 'Submit',
@@ -25,6 +25,6 @@ export default {
     	  =0 {does not have any comments}
     	  =1 {has # comment}
     	  other {has # comments}
-    	} as of {date}`,
-  },
+    	} as of {date}`
+  }
 };

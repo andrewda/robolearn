@@ -11,27 +11,19 @@ module.exports = {
   devtool: 'hidden-source-map',
 
   entry: {
-    app: [
-      './client/index.js',
-    ],
-    vendor: [
-      'react',
-      'react-dom',
-    ]
+    app: ['./client/index.js'],
+    vendor: ['react', 'react-dom']
   },
 
   output: {
     path: __dirname + '/dist/client/',
     filename: '[name].[chunkhash].js',
-    publicPath: '/',
+    publicPath: '/'
   },
 
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    modules: [
-      'client',
-      'node_modules',
-    ],
+    modules: ['client', 'node_modules']
   },
 
   module: {
@@ -39,61 +31,68 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?localIdentName=[hash:base64]&modules&importLoaders=1!postcss-loader'),
-      }, {
+        loader: ExtractTextPlugin.extract(
+          'style-loader',
+          'css-loader?localIdentName=[hash:base64]&modules&importLoaders=1!postcss-loader'
+        )
+      },
+      {
         test: /\.css$/,
         include: /node_modules/,
-        loaders: ['style-loader', 'css-loader'],
-      }, {
+        loaders: ['style-loader', 'css-loader']
+      },
+      {
         test: /\.jsx*$/,
         exclude: /node_modules/,
-        loader: 'babel',
-      }, {
-        test: /\.(jpe?g|gif|png|svg)$/i,
-        loader: 'url-loader?limit=10000',
-      }, {
-        test: /\.json$/,
-        loader: 'json-loader',
+        loader: 'babel'
       },
-    ],
+      {
+        test: /\.(jpe?g|gif|png|svg)$/i,
+        loader: 'url-loader?limit=10000'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
+    ]
   },
 
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
+        NODE_ENV: JSON.stringify('production')
       }
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
-      filename: 'vendor.js',
+      filename: 'vendor.js'
     }),
     new ExtractTextPlugin('app.[chunkhash].css', { allChunks: true }),
     new ManifestPlugin({
-      basePath: '/',
+      basePath: '/'
     }),
     new ChunkManifestPlugin({
-      filename: "chunk-manifest.json",
-      manifestVariable: "webpackManifest",
+      filename: 'chunk-manifest.json',
+      manifestVariable: 'webpackManifest'
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
-        warnings: false,
+        warnings: false
       }
-    }),
+    })
   ],
 
   postcss: () => [
     postcssFocus(),
     cssnext({
-      browsers: ['last 2 versions', 'IE > 10'],
+      browsers: ['last 2 versions', 'IE > 10']
     }),
     cssnano({
       autoprefixer: false
     }),
     postcssReporter({
-      clearMessages: true,
-    }),
-  ],
+      clearMessages: true
+    })
+  ]
 };

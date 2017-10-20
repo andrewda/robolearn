@@ -1,17 +1,17 @@
-.single-post {
+.single-course {
   margin: 20px 0;
   padding: 15px;
   border-radius: 2px;
 }
 
-.post-title{
+.course-title{
   font-size: 28px;
   margin-bottom: 16px;
   font-weight: 400;
   color: #616161;
 }
 
-.post-title a{
+.course-title a{
   text-decoration: none;
   color: #616161;
 }
@@ -22,20 +22,20 @@
   color: #757575;
 }
 
-.post-desc{
+.course-desc{
   font-size: 14px;
   color: #888;
   margin-bottom: 8px;
 }
 
-.post-action a{
+.course-action a{
   color: #555;
   text-decoration: none;
   font-size: 14px;
   font-style: italic;
 }
 
-.post-action a:hover{
+.course-action a:hover{
   color: #EF5350;
 }
 
@@ -47,12 +47,12 @@
   margin: 32px auto 0;
 }
 
-.post-detail .post-title{
+.course-detail .course-title{
   font-size: 42px;
   color: #454545;
 }
 
-.post-detail .post-desc{
+.course-detail .course-desc{
   font-size: 16px;
   color: #555;
 }

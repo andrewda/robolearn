@@ -8,7 +8,7 @@ export function sequence(items, consumer) {
     const item = items.shift();
     if (item) {
       return consumer(item)
-        .then((result) => {
+        .then(result => {
           results.push(result);
         })
         .then(runner);
