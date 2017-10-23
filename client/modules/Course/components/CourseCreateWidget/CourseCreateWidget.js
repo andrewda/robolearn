@@ -16,7 +16,7 @@ export class CourseCreateWidget extends Component {
   };
 
   render() {
-    const cls = `${styles.form} ${this.props.showAddCourse ? styles.appear : ''}`;
+    const cls = `${styles.form} ${styles.appear}`;
     return (
       <div className={cls}>
         <div className={styles['form-content']}>
@@ -53,7 +53,6 @@ export class CourseCreateWidget extends Component {
 
 CourseCreateWidget.propTypes = {
   addCourse: PropTypes.func.isRequired,
-  showAddCourse: PropTypes.bool.isRequired,
   intl: intlShape.isRequired
 };
 

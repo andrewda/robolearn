@@ -36,7 +36,7 @@ export default (
       }}
     />
     <Route
-      path="/new-course"
+      path="/new"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(

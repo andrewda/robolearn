@@ -9,7 +9,7 @@ router.route('/courses').get(CourseController.getCourses);
 router.route('/courses/:cuid').get(CourseController.getCourse);
 
 // Add a new Course
-router.route('/courses').post(CourseController.addCourse);
+router.route('/courses/new').post(CourseController.addCourse);
 
 // Delete a course by cuid
 router.route('/courses/:cuid').delete(CourseController.deleteCourse);

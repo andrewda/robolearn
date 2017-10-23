@@ -33,7 +33,7 @@ export function Header(props, context) {
           </Link>
         </h1>
         {context.router.isActive('/', true) ? (
-          <Link className={styles['add-course-button']} to="/new-course">
+          <Link className={styles['add-course-button']} to="/new">
             <FormattedMessage id="addCourse" />
           </Link>
         ) : null}

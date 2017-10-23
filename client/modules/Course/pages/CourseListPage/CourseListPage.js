@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 // Import Components
 import CourseList from '../../components/CourseList';
-import CourseCreateWidget from '../../components/CourseCreateWidget/CourseCreateWidget';
 
 // Import Actions
 import {
@@ -37,10 +36,6 @@ class CourseListPage extends Component {
   render() {
     return (
       <div>
-        <CourseCreateWidget
-          addCourse={this.handleAddCourse}
-          showAddCourse={this.props.showAddCourse}
-        />
         <CourseList
           handleDeleteCourse={this.handleDeleteCourse}
           courses={this.props.courses}
