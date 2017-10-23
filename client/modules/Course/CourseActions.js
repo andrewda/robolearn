@@ -15,7 +15,7 @@ export function addCourse(course) {
 
 export function addCourseRequest(course) {
   return dispatch => {
-    return callApi('courses/new', 'course', {
+    return callApi('courses', 'post', {
       course: {
         name: course.name,
         title: course.title,

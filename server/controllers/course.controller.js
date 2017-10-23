@@ -27,6 +27,7 @@ export function getCourses(req, res) {
  * @returns void
  */
 export function addCourse(req, res) {
+  console.log('got one')
   if (!req.body.course.name || !req.body.course.title || !req.body.course.content) {
     res.status(403).end();
   }

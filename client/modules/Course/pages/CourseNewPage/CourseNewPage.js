@@ -38,4 +38,4 @@ CourseNewPage.propTypes = {
 };
 
 
-export default CourseNewPage;
+export default connect()(CourseNewPage);
