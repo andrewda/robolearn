@@ -6,6 +6,13 @@ import { FormattedMessage } from 'react-intl';
 import styles from './CourseListItem.css';
 
 function CourseListItem(props) {
+  let originalContent = props.course.content.replace(/<br \/>/g, ' ')
+  let cutContent = originalContent.substr(0, 400);
+  
+  if (cutContent !== originalContent) {
+    cutContent = cutContent.trim() + '...';
+  }
+  
   return (
     <div className={styles['single-course']}>
       <h3 className={styles['course-title']}>
@@ -16,7 +23,7 @@ function CourseListItem(props) {
       <p className={styles['author-name']}>
         <FormattedMessage id="by" /> {props.course.name}
       </p>
-      <p className={styles['course-desc']}>{props.course.content}</p>
+      <div className={styles['course-desc']} dangerouslySetInnerHTML={{ __html: cutContent }}></div>
       <p className={styles['course-action']}>
         <a href="#" onClick={props.onDelete}>
           <FormattedMessage id="deleteCourse" />

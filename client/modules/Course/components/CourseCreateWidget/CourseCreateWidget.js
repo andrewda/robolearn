@@ -34,7 +34,7 @@ export class CourseCreateWidget extends Component {
             ref="title"
           />
           <textarea
-            placeholder={this.props.intl.messages.courseContent}
+            placeholder={this.props.intl.messages.courseDescription}
             className={styles['form-field']}
             ref="content"
           />

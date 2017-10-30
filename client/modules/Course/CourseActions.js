@@ -42,7 +42,9 @@ export function fetchCourses() {
 
 export function fetchCourse(cuid) {
   return dispatch => {
-    return callApi(`courses/${cuid}`).then(res => dispatch(addCourse(res.course)));
+    return callApi(`courses/${cuid}`).then(res =>
+      dispatch(addCourse(res.course))
+    );
   };
 }
 

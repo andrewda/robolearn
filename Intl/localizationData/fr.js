@@ -9,7 +9,7 @@ export default {
     createNewCourse: 'Créer un nouveau cours',
     authorName: "Nom de l'auteur",
     courseTitle: 'Titre du cours',
-    courseContent: 'Contenu après',
+    courseDescription: 'Description du cours',
     submit: 'Soumettre',
     comment: `user {name} {value, plural,
     	  =0 {does not have any comments}

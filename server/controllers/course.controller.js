@@ -27,7 +27,11 @@ export function getCourses(req, res) {
  * @returns void
  */
 export function addCourse(req, res) {
-  if (!req.body.course.name || !req.body.course.title || !req.body.course.content) {
+  if (
+    !req.body.course.name ||
+    !req.body.course.title ||
+    !req.body.course.content
+  ) {
     res.status(403).end();
   }
 
@@ -36,7 +40,7 @@ export function addCourse(req, res) {
   // Let's sanitize inputs
   newCourse.title = sanitizeHtml(newCourse.title);
   newCourse.name = sanitizeHtml(newCourse.name);
-  newCourse.content = sanitizeHtml(newCourse.content);
+  newCourse.content = sanitizeHtml(newCourse.content.replace(/(?:\r\n|\r|\n)/g, '<br />'));
 
   newCourse.slug = slug(newCourse.title.toLowerCase(), { lowercase: true });
   newCourse.cuid = cuid();
