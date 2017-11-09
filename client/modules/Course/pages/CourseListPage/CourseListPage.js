@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 
 // Import Components
-import CourseList from '../../components/CourseList';
+import CourseList from '../../components/CourseList/CourseList';
 
 // Import Actions
 import {
@@ -33,12 +33,25 @@ class CourseListPage extends Component {
     this.props.dispatch(addCourseRequest({ name, title, content }));
   };
 
+  hashByCategory = courses => {
+    const hash = {};
+    courses.forEach(course => {
+      const key = course.category ? course.category : 'uncategorized';
+      if (hash[key]) {
+        hash[key].push(course);
+      } else {
+        hash[key] = [course];
+      }
+    });
+    return hash;
+  };
+
   render() {
     return (
       <div>
         <CourseList
           handleDeleteCourse={this.handleDeleteCourse}
-          courses={this.props.courses}
+          courses={this.hashByCategory(this.props.courses)}
         />
       </div>
     );

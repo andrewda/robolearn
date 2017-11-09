@@ -1,4 +1,5 @@
 import callApi from '../../util/apiCaller';
+import { browserHistory } from 'react-router';
 
 // Export Constants
 export const ADD_COURSE = 'ADD_COURSE';
@@ -14,14 +15,19 @@ export function addCourse(course) {
 }
 
 export function addCourseRequest(course) {
+  console.log(course);
   return dispatch => {
     return callApi('courses', 'post', {
       course: {
         name: course.name,
         title: course.title,
-        content: course.content
+        content: course.content,
+        category: course.category
       }
-    }).then(res => dispatch(addCourse(res.course)));
+    }).then(res => {
+      browserHistory.push(`/course/${res.course.slug}-${res.course.cuid}`);
+      dispatch(addCourse(res.course));
+    });
   };
 }
 

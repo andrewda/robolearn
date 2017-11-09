@@ -21,7 +21,10 @@ export function CourseDetailPage(props) {
         <p className={styles['author-name']}>
           <FormattedMessage id="by" /> {props.course.name}
         </p>
-        <div className={styles['course-desc']} dangerouslySetInnerHTML={{ __html: props.course.content }}></div>
+        <div
+          className={styles['course-desc']}
+          dangerouslySetInnerHTML={{ __html: props.course.content }}
+        />
       </div>
     </div>
   );

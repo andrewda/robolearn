@@ -15,8 +15,8 @@ import styles from '../../components/CourseListItem/CourseListItem.css';
 import { addCourseRequest } from '../../CourseActions';
 
 export class CourseNewPage extends Component {
-  handleAddCourse = (name, title, content) => {
-    this.props.dispatch(addCourseRequest({ name, title, content }));
+  handleAddCourse = (name, title, content, category) => {
+    this.props.dispatch(addCourseRequest({ name, title, content, category }));
     browserHistory.push('/');
   };
 

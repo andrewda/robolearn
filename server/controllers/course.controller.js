@@ -3,6 +3,10 @@ import cuid from 'cuid';
 import slug from 'limax';
 import sanitizeHtml from 'sanitize-html';
 
+const options = {
+  allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
+};
+
 /**
  * Get all courses
  * @param req
@@ -16,6 +20,7 @@ export function getCourses(req, res) {
       if (err) {
         res.status(500).send(err);
       }
+
       res.json({ courses });
     });
 }
@@ -30,7 +35,8 @@ export function addCourse(req, res) {
   if (
     !req.body.course.name ||
     !req.body.course.title ||
-    !req.body.course.content
+    !req.body.course.content ||
+    !req.body.course.category
   ) {
     res.status(403).end();
   }
@@ -40,7 +46,11 @@ export function addCourse(req, res) {
   // Let's sanitize inputs
   newCourse.title = sanitizeHtml(newCourse.title);
   newCourse.name = sanitizeHtml(newCourse.name);
-  newCourse.content = sanitizeHtml(newCourse.content.replace(/(?:\r\n|\r|\n)/g, '<br />'));
+  newCourse.content = sanitizeHtml(
+    newCourse.content.replace(/(?:\r\n|\r|\n)/g, '<br />'),
+    options
+  );
+  newCourse.category = sanitizeHtml(newCourse.category);
 
   newCourse.slug = slug(newCourse.title.toLowerCase(), { lowercase: true });
   newCourse.cuid = cuid();
@@ -75,7 +85,7 @@ export function getCourse(req, res) {
  */
 export function deleteCourse(req, res) {
   Course.findOne({ cuid: req.params.cuid }).exec((err, course) => {
-    if (err) {
+    if (err && course) {
       res.status(500).send(err);
     }
 
