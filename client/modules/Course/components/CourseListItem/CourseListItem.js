@@ -28,11 +28,6 @@ function CourseListItem(props) {
         className={styles['course-desc']}
         dangerouslySetInnerHTML={{ __html: sanitizeHtml(cutContent) }}
       />
-      <p className={styles['course-action']}>
-        <a href="#" onClick={props.onDelete}>
-          <FormattedMessage id="deleteCourse" />
-        </a>
-      </p>
       <hr className={styles.divider} />
     </div>
   );
